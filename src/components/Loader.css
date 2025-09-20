@@ -1,0 +1,93 @@
+/* Fullscreen overlay */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1f2937; /* dark kitchen background */
+  z-index: 9999;       /* always above sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Plate */
+.plate {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background: #d4af37; /* golden plate */
+  border-radius: 50%;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: plateSpin 6s linear infinite;
+}
+
+@keyframes plateSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Food (center item) */
+.food {
+  width: 70px;
+  height: 70px;
+  background: tomato; /* pizza/meat color */
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Cheese topping effect */
+.food::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 60%;
+  background: #fbbf24; /* cheese yellow */
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* Steam animation */
+.steam {
+  position: absolute;
+  width: 12px;
+  height: 35px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: steamUp 2.5s infinite ease-in-out;
+}
+
+.steam1 { top: -45px; left: 40px; animation-delay: 0s; }
+.steam2 { top: -55px; left: 60px; animation-delay: 0.5s; }
+.steam3 { top: -50px; left: 80px; animation-delay: 1s; }
+
+@keyframes steamUp {
+  0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-40px) scale(0.6); opacity: 0; }
+}
+
+/* Loader text */
+.loader-text {
+  margin-top: 25px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  color: #fbbf24;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

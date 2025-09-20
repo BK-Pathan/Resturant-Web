@@ -1,0 +1,68 @@
+/* Outer container */
+.signup-background{
+    background-image: url("https://i.pinimg.com/1200x/6e/c3/94/6ec394f677cec1600419b3f728d2a72f.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+}
+.signup-container {
+  max-width: 28rem;       /* same as max-w-md */
+  margin: 1rem auto 0;    /* mt-16 and centered */
+  padding: 1.5rem;        /* p-6 */
+  background-color: rgba(216, 209, 216, 0.5);
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 2.5rem; /* p-10 */
+  border: 2px solid rgba(87, 67, 120, 0.9); /* border-black/10 */
+}
+.text{
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #220b4d;
+}
+/* Logo wrapper */
+.logo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Title */
+.signup-title {
+  font-size: 1.9rem;   /* text-2xl */
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem; /* mb-6 */
+  color: #220b4d; /* example primary color */
+}
+
+
+/* Error message */
+.error-message {
+  color: #dc2626; /* red-600 */
+  text-align: center;
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+/* Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+}
+
+/* Submit button */
+.signup-btn {
+  width: 100%;
+  color: white;
+  background-color: slateblue;
+}
+.signup-btn:hover {
+  background-color: indigo;
+}

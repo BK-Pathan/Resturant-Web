@@ -1,0 +1,136 @@
+/* ===========================
+   Default Styles (Desktop/Laptop)
+   =========================== */
+
+/* Logo hidden by default */
+.logo {
+  display: none;
+}
+
+.logo-wrapper {
+  display: none;
+}
+
+.logo-img {
+  display: none;
+}
+
+/* Navbar hidden by default */
+.top-navbar {
+  display: none;
+}
+
+/* Layout wrapper */
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full screen height */
+}
+
+/* Main content area */
+.admin-main {
+  flex: 1; /* content grow + footer push */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer */
+footer {
+  margin-top: auto; /* footer auto push bottom */
+}
+
+/* ===========================
+   Mobile/Tablet (≤768px)
+   =========================== */
+@media (max-width: 768px) {
+  /* Background for admin layout */
+  .admin-layout {
+     background-color:#FF9B00;
+
+  }
+
+  /* Top navbar */
+  .top-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* shadow */
+    padding: 0.75rem 1rem; /* py-3 px-4 */
+    margin-bottom: 1rem; /* mb-4 */
+    border-radius: 0.375rem; /* rounded-md */
+  }
+
+  /* Navbar links container */
+  .top-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+
+  /* Navbar links */
+  .nav-link {
+    padding: 0.4rem 1rem;
+    background-color: #e5e7eb;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: #111827;
+    transition: background-color 0.2s ease-in-out;
+    font-size: 0.95rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background-color: #d1d5db;
+  }
+
+  /* Active link */
+  .nav-link.active {
+    background-color: #9ca3af;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* Logo wrapper (mobile only) */
+  .logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  /* Logo image */
+  .logo-img {
+    display: inline-block;
+    width: 80px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-top: 2px;
+    margin-left: 250px;
+  }
+
+  /* Logo text */
+  .logo {
+    display: block;
+    font-size: 0.95rem;
+    margin: 0;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease-in-out;
+  }
+
+  /* Hover effect */
+  .logo-link:hover .logo {
+    color: #D4AF37;
+  }
+}

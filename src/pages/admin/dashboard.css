@@ -1,0 +1,191 @@
+.dashboard-wrapper {
+  position: relative;
+  background-color:#EBE389;
+  padding: 1rem;
+    min-height: 100vh; 
+  overflow-x: hidden;
+}
+
+/* Sirf desktop pe sidebar ke liye space */
+@media (min-width: 1025px) {
+  .dashboard-wrapper {
+    margin-left: 15rem;
+  }
+   .top-bar {
+    position: fixed;
+    top: 0;
+    left: 6rem;     /* sidebar ke baad start ho */
+    width: calc(100% - 15rem); /* sidebar ke baad bachi jagah le */
+    height: 50px;    /* normal navbar height */
+    background: #e0f2fe;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 998;
+  }
+}
+
+/* Top bar container */
+.top-bar {
+    position: absolute;
+    top: 0%;
+  display: flex;
+  background: transparent;
+  
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 50px;
+  max-width: 600px; /* bar ki max width */
+  margin: 0 auto;   /* center horizontally */
+}
+
+/* Button */
+.search-btn {
+  background-color:#FF9B00;
+  color: #fff;
+  border-radius: 6px;
+  transition: background 0.3s;
+  white-space: nowrap;
+  height: 40px;
+  width: 80px;
+  /* padding-bottom: 10px !important; */
+}
+.search-btn:hover {
+  background-color: #988429;
+}
+
+/* Auth buttons */
+.auth-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.login-btn,
+.signup-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  text-align: center;
+  transition: background 0.3s;
+  font-size: 0.875rem;
+}
+.login-btn {
+  background-color: #3b82f6;
+}
+.login-btn:hover {
+  background-color: #2563eb;
+}
+.signup-btn {
+  background-color: #22c55e;
+}
+.signup-btn:hover {
+  background-color: #16a34a;
+}
+
+/* Search results */
+.search-results {
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+.search-item {
+  font-size: 1.125rem;
+}
+.highlight {
+  color: #2563eb;
+  font-weight: bold;
+}
+.not-found {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+   
+}
+
+/* Charts grid */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+}
+@media (max-width: 992px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Extra stats */
+.extra-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Icons */
+.icon-pink {
+  color: #ec4899;
+}
+.icon-purple {
+  color: #a855f7;
+}
+.icon-yellow {
+  color: #facc15;
+}
+.search-container input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  padding: 0 0.75rem;
+  color: #111827;
+    border: #111827 1px solid;
+}
+
+/* 📱 Responsive adjustments */
+@media (max-width: 768px) {
+  .search-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+    margin-left: 7px;
+  }
+
+  .search-container input {
+    flex: 1;
+    min-width: 0;
+    height: 36px;
+    padding: 0 0.75rem;
+  }
+
+  .search-btn {
+    flex-shrink: 0;
+    height: 36px;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-btn,
+  .signup-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .stats-card .value {
+    font-size: 1.25rem;
+  }
+}

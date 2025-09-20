@@ -1,0 +1,98 @@
+/* Footer base styles */
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+  background-color: #948240 ; /* slate-400 */
+  border-top: 2px solid #000;
+  color:white; 
+}
+
+/* Footer container center aligned */
+.footer-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* GRID layout */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+@media (min-width:1024px) {
+  .footer{
+      margin-left: 240px;
+  }
+}
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ✅ Extra space only in admin panel with sidebar */
+@media (min-width: 1024px) {
+  body.admin-panel .footer {
+    margin-left: 16rem; /* Sidebar ka width */
+  }
+}
+
+/* Company section */
+.footer-company {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 1rem;
+  color:white; /* gray-700 */
+}
+
+.footer-title {
+  margin-bottom: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color:white; 
+  letter-spacing: 0.05em;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+color:white; 
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+}
+
+.footer-link {
+  font-size: 1rem;
+  font-weight: 500;
+  color:white; 
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #10151e; /* gray-700 */
+}

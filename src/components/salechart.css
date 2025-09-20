@@ -1,0 +1,17 @@
+ .sales-text{
+    color:white;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.popular-text{
+    color: white;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.bg{
+    background-color: #b1a653;
+}

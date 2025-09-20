@@ -1,0 +1,106 @@
+/* Default sidebar (desktop) */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* full screen height */
+  width: 15rem; /* 64 in Tailwind = 16rem */
+  background-color: #c1924d; /* gray-900 */
+  color: white;
+  
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Sidebar title */
+.sidebar-title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Nav container */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* space-y-4 */
+}
+
+/* Sidebar link */
+.sidebar-link,
+.sidebar-item {
+  display: block;
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.sidebar-link:hover,
+.sidebar-item:hover {
+  background-color: #b87e28; /* gray-700/800 */
+}
+
+/* Active state */
+.sidebar-link.active,
+.sidebar-item.active {
+  background-color:#FF9B00; /* pink-500 */
+  font-weight: 600;
+}
+
+/* Logout button */
+.sidebar-logout {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: #dc2626; /* red-600 */
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar-logout:hover {
+  background-color: #b91c1c; /* red-700 */
+}
+
+/* ========================= */
+/* Mobile Navbar Styles */
+/* ========================= */
+/* Hamburger button (mobile only) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #1f2937; /* gray-900 */
+  border-radius: 2px;
+}
+
+/* Mobile view me show kare */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Sidebar hidden by default on mobile */
+  .sidebar {
+   
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
+
+  /* Active hone pe sidebar visible */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+}

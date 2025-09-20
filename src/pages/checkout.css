@@ -1,0 +1,74 @@
+/* Checkout Page Styles */
+.checkout-container {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #000;
+  
+}
+.checkout-page{
+  background-color:#EBE389;
+}
+
+.checkout-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.checkout-alert {
+ background-color: #b1a653;
+  color: #15803d;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.checkout-input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.checkout-summary {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.125rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color:#FF9B00;
+
+  color: white;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+}
+
+.checkout-btn:hover {
+  background-color: #7b631b;
+}
+
+.checkout-btn:disabled {
+  background-color: #22c55e;
+  cursor: not-allowed;
+}

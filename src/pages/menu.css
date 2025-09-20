@@ -1,0 +1,115 @@
+.menu-container {
+  padding: 24px;
+  background-color:#EBE389;
+  min-height: 100vh;
+}
+
+/* sirf desktop pe sidebar ka space chhodega */
+@media (min-width: 1024px) {
+  .menu-container {
+    margin-left: 230px; /* sidebar ki width ke barabar */
+  }
+}
+
+.menu-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.menu-card {
+   background-color: #b1a653;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-image-wrapper {
+  height: 160px;
+  width: 100%;
+  background: white;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-image {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.menu-no-image {
+  color: #718096;
+}
+
+.menu-item-title {
+font-size: 28px;
+  font-weight: 600;
+}
+
+.menu-item-price {
+  margin-top: 4px;
+  color: black;
+  font-size: 24px;
+}
+
+
+.menu-status {
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.menu-status.available {
+  color:rgb(34, 148, 32);
+  font-size: 28px;
+}
+
+.menu-status.not-available {
+  color: #dc2626;
+}
+
+.menu-status.unknown {
+  color: #a0aec0;
+}
+
+.menu-description {
+  margin-top: 8px;
+font-size: 18px;
+  color: white;
+}
+
+.menu-add-btn {
+  margin-top: 16px;
+  background-color:#FF9B00;
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-add-btn:hover {
+  background-color: #a9a01c;
+}
