@@ -155,49 +155,64 @@
     border: #111827 1px solid;
 }
 
-/* 📱 Responsive adjustments */
+/* 📱 Tablets and below */
 @media (max-width: 768px) {
-  .search-container {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    width: 100%;
-    margin-left: 7px;
-  }
-
-  .search-container input {
-    flex: 1;
-    min-width: 0;
-    height: 36px;
-    padding: 0 0.75rem;
-  }
-
-  .search-btn {
-    flex-shrink: 0;
-    height: 36px;
-    padding: 0 1rem;
-  }
-
-  /* 👇 Add this for responsive Login/Signup buttons */
   .login-btn,
   .signup-btn {
+    margin-top: 10px !important;
     height: 36px;
-    width: 70px;
+    width: 50px;
+    min-width: 50px;
+    padding: 0 0.3rem;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .search-btn{
+    height: 30px;
+    width: 80px;
+    padding: 2px;
+  }
+
+  .login-btn {
+    background-color: #ff5733;
+    margin-left: 5px;
+    color: white;
+    border: 1px solid white;
+  }
+
+  .signup-btn {
+    background-color: #ff5733;
+    color: white;
+    margin-right: 3px;
+  }
+
+  .login-btn:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .signup-btn:hover {
+    background-color: #e14d2a;
+  }
+
+  /* 👇 Make sure buttons stay in one row with spacing */
+  .login-btn + .signup-btn {
+    margin-left: 0.5rem;
   }
 }
 
+/* 📱 Extra small screens (like < 480px) */
 @media (max-width: 480px) {
+
   .login-btn,
   .signup-btn {
+    margin-top: 10px !important;
     font-size: 0.75rem;
     padding: 0.4rem 0.6rem;
-
-    /* 👇 smaller size for extra small screens */
     height: 32px;
-    width: 60px;
-  }
-
-  .stats-card .value {
-    font-size: 1.25rem;
+    min-width: 60px;
   }
 }

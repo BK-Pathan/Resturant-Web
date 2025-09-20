@@ -1,9 +1,9 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { databases } from "../appwrite/conf";
-import { ID, Query } from "appwrite";
-import Configure from "../Conf/configure";   // ✅ yeh add karo
+import { ID } from "appwrite";
+import Configure from "../Conf/configure";
+import authService from "../appwrite/auth"; // ✅ import auth service
 import "./checkout.css";
-
 
 export default function Checkout({ cart = [] }) {
   const [form, setForm] = useState({ name: "", email: "", address: "", phone: "" });
@@ -11,39 +11,27 @@ export default function Checkout({ cart = [] }) {
   const [loading, setLoading] = useState(false);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-  const deliveryFee = 100; // static for now
+  const deliveryFee = 100;
   const total = subtotal + deliveryFee;
 
-  // ✅ Fetch last order and prefill form
+  // ✅ Prefill with logged-in user
   useEffect(() => {
-    const fetchLastOrder = async () => {
+    const fetchUser = async () => {
       try {
-        // (yahan login user ka email ya manually dala hua email use kar sakte ho)
-        const res = await databases.listDocuments(
-          Configure.appwriteDATABASEID,
-          Configure.appwriteORDER,
-          [
-            Query.equal("email", ["hy@gmail.com"]), //  replace with logged-in user email
-            Query.orderDesc("$createdAt"),
-            Query.limit(1),
-          ]
-        );
-
-        if (res.documents.length > 0) {
-          const last = res.documents[0];
-          setForm({
-            name: last.name || "",
-            email: last.email || "",
-            address: last.address || "",
-            phone: last.phone?.toString() || "",
-          });
+        const user = await authService.getUser();
+        if (user) {
+          setForm((prev) => ({
+            ...prev,
+            email: user.email,   // 👈 auto-fill logged in user email
+            name: user.name || prev.name,
+          }));
         }
       } catch (err) {
-        console.error("Error fetching last order:", err);
+        console.error("❌ Error fetching logged-in user:", err);
       }
     };
 
-    fetchLastOrder();
+    fetchUser();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -52,27 +40,25 @@ export default function Checkout({ cart = [] }) {
 
     try {
       await databases.createDocument(
-        Configure.appwriteDATABASEID,   // ✅ Database ID
-        Configure.appwriteORDER,        // ✅ Orders collection ID
+        Configure.appwriteDATABASEID,
+        Configure.appwriteORDER,
         ID.unique(),
         {
           name: form.name,
-          email: form.email,
+          email: form.email,      // 👈 ab hamesha login user email save hogi
           address: form.address,
           phone: form.phone,
-          userId: "guest",             // later replace with logged in user
-    Items: cart.map((item) => `${item.title} - Rs.${item.price}`),
-          subtotal: subtotal,          // required
+          Items: cart.map((item) => `${item.title} - Rs.${item.price}`),
+          subtotal: subtotal,
           DeliveryFee: deliveryFee,
-          Total: total,                // capital T
+          Total: total,
           Foodstatus: "Pending",
           PaymentStatus: "Unpaid",
-         
         }
       );
 
       setSuccess("✅ Order placed successfully!");
-      setForm({ name: "", email: "", address: "", phone: "" });
+      setForm({ name: "", email: form.email, address: "", phone: "" }); // email reset na karo
     } catch (err) {
       console.error("Appwrite error:", err);
       setSuccess("❌ Failed to place order. Try again.");
@@ -83,63 +69,62 @@ export default function Checkout({ cart = [] }) {
 
   return (
     <div className="checkout-page">
- <div className="checkout-container">
-      <h1 className="checkout-title">Checkout</h1>
+      <div className="checkout-container">
+        <h1 className="checkout-title">Checkout</h1>
 
-      {success && <div className="checkout-alert">{success}</div>}
+        {success && <div className="checkout-alert">{success}</div>}
 
-      <form onSubmit={handleSubmit} className="checkout-form">
-        <input
-          type="text"
-          placeholder="Name"
-          className="checkout-input"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          className="checkout-input"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Address"
-          className="checkout-input"
-          value={form.address}
-          onChange={(e) => setForm({ ...form, address: e.target.value })}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Phone"
-          className="checkout-input"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          required
-        />
+        <form onSubmit={handleSubmit} className="checkout-form">
+          <input
+            type="text"
+            placeholder="Name"
+            className="checkout-input"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="checkout-input"
+            value={form.email}
+            readOnly   // 👈 user manually change na kare
+          />
+          <input
+            type="text"
+            placeholder="Address"
+            className="checkout-input"
+            value={form.address}
+            onChange={(e) => setForm({ ...form, address: e.target.value })}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Phone"
+            className="checkout-input"
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            required
+          />
 
-        <div className="checkout-summary">
-          <span>Subtotal:</span>
-          <span>Rs. {subtotal}</span>
-        </div>
-        <div className="checkout-summary">
-          <span>Delivery Fee:</span>
-          <span>Rs. {deliveryFee}</span>
-        </div>
-        <div className="checkout-summary">
-          <span>Total:</span>
-          <span>Rs. {total}</span>
-        </div>
+          <div className="checkout-summary">
+            <span>Subtotal:</span>
+            <span>Rs. {subtotal}</span>
+          </div>
+          <div className="checkout-summary">
+            <span>Delivery Fee:</span>
+            <span>Rs. {deliveryFee}</span>
+          </div>
+          <div className="checkout-summary">
+            <span>Total:</span>
+            <span>Rs. {total}</span>
+          </div>
 
-        <button type="submit" disabled={loading} className="checkout-btn">
-          {loading ? "Placing Order..." : "Place Order"}
-        </button>
-      </form>
-    </div>
+          <button type="submit" disabled={loading} className="checkout-btn">
+            {loading ? "Placing Order..." : "Place Order"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

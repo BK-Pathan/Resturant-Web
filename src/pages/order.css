@@ -50,3 +50,46 @@
   color: #4a5568;
   font-size: 1rem;
 }
+
+.no-orders {
+  padding: 30px;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #888;
+  background: #f9f9f9;
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  max-width: 600px; /* ✅ center width for large screens */
+}
+
+/* ✅ Responsive styles */
+@media (max-width: 768px) {
+  .orders-loading,
+  .orders-empty {
+    padding: 16px;
+    font-size: 0.9rem;
+  }
+
+  .no-orders {
+    padding: 20px;
+    font-size: 16px;
+    margin: 15px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-loading,
+  .orders-empty {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .no-orders {
+    padding: 15px;
+    font-size: 14px;
+    margin: 10px auto;
+    border-radius: 8px;
+  }
+}
