@@ -177,6 +177,13 @@
     height: 36px;
     padding: 0 1rem;
   }
+
+  /* 👇 Add this for responsive Login/Signup buttons */
+  .login-btn,
+  .signup-btn {
+    height: 36px;
+    width: 70px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -184,7 +191,12 @@
   .signup-btn {
     font-size: 0.75rem;
     padding: 0.4rem 0.6rem;
+
+    /* 👇 smaller size for extra small screens */
+    height: 32px;
+    width: 60px;
   }
+
   .stats-card .value {
     font-size: 1.25rem;
   }
